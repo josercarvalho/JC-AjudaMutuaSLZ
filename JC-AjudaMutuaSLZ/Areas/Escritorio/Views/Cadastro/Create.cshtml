@@ -1,0 +1,158 @@
+﻿@model JC_AjudaMutuaSLZ.Models.Clientes
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm()) 
+{
+	@Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <h2>Cadastrar Clientes</h2>
+        <hr />
+		<div class="form-horizontal">
+				<div class="form-group">
+							@Html.LabelFor(model => model.idCliente, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.idCliente, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.idCliente, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Nome, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Nome, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Email, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Email, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Login, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Login, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Telefone, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Telefone, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Telefone, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.SKYPE, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.SKYPE, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.SKYPE, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Senha, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Senha, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Senha, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Banco, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Banco, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Banco, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.TipoConta, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.TipoConta, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.TipoConta, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Agencia, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Agencia, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Agencia, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Conta, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Conta, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Conta, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Operacao, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Operacao, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Operacao, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Patrocinador, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Patrocinador, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Patrocinador, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.DataCadastro, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.DataCadastro, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.DataCadastro, string.Empty)
+					</div>
+			</div>
+				<div class="form-group">
+							@Html.LabelFor(model => model.Status, new { @class = "col-sm-3 control-label" })
+		        
+					<div class="col-sm-9">
+								@Html.TextBoxFor(model => model.Status, new { @class = "form-control" })
+								@Html.ValidationMessageFor(model => model.Status, string.Empty)
+					</div>
+			</div>
+			</div>
+		<div class="form-group">
+			<div class="col-md-offset-3 col-md-9">
+				<button type="submit" class="btn btn-primary">Salvar Registros</button>
+				<a class="btn btn-danger" href="@Url.Action("Index")" >Cancelar</a>
+			</div>
+		</div>
+	</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+	<script>
+
+	    $.validator.setDefaults({
+	        highlight: function (element) {
+	            $(element).closest(".form-group").addClass("error");
+	        },
+	        unhighlight: function (element) {
+	            $(element).closest(".form-group").removeClass("error");
+	        }
+	    });
+	</script>
+}

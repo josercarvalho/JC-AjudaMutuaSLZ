@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="container" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Ajuda Mutua SLZ", "Index", "Home", null, new { @class = "navbar-brand" })
+            <ul class="nav  navbar-nav">
+                @*<li>@Html.ActionLink("Meus Dados", "Index", "Cadastro")</li>*@
+                <li><a href="@Url.Action("Edit", "Cadastro", new { id = Session["idUsuario"] })">Meus Dados</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerenciar recebimentos<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Minha Rede", "MinhaRede", "Home")</li>
+                        @*<li>@Html.ActionLink("Extratos", "Construcao", "Home")</li>
+                        <li class="dropdown-header">Resumos</li>
+                        <li>@Html.ActionLink("Aguardando pgto", "Construcao", "Home")</li>
+                        <li>@Html.ActionLink("A aprovar", "Construcao", "Home")</li>
+                        <li>@Html.ActionLink("Aprovados", "Construcao", "Home")</li>
+                        <li>@Html.ActionLink("Reprovados", "Construcao", "Home")</li>*@
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Liberar Cadastros", "LiberaCadastro", "Cadastro")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("UPLines", "UpLine", "Home")</li>
+                <li>@Html.ActionLink("Como Divulgar", "Divulgar", "Home")</li>
+                
+            </ul>
+        </div>
+        @*@Html.Partial("_LoginPartial")*@
+        <div class="pull-right">
+            <label class="navbar-brand">Olá @User.Identity.Name!</label>
+            <form class="navbar-form navbar-left" role="search" action="@Url.Action("Sair", "ValidaUsuario", new {area="Escritorio"})">
+                <button type="submit" class="glyphicon glyphicon-log-out btn btn-danger" title="Sair"></button>
+            </form>
+        </div>
+    </nav>
+</header>

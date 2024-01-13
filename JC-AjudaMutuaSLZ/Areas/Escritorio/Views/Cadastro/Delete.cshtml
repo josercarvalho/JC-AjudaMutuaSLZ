@@ -1,0 +1,159 @@
+﻿@model JC_AjudaMutuaSLZ.Models.Clientes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Tem certeza que deseja excluir este registro?</h3>
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.idCliente)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.idCliente)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Nome)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Login)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Login)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Telefone)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Telefone)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.SKYPE)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.SKYPE)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Senha)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Senha)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Banco)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Banco)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.TipoConta)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.TipoConta)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Agencia)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Agencia)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Conta)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Conta)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Operacao)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Operacao)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Patrocinador)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Patrocinador)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.DataCadastro)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.DataCadastro)
+		</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Status)
+		</dt>    
+		<dd>
+			@Html.DisplayFor(model => model.Status)
+		</dd>
+    </dl>
+</dl>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+	<div class="form-group">
+		<div class="col-md-offset-3 col-md-9">
+			<button type="submit" class="btn btn-primary">Excluir Registros</button>
+			<a class="btn btn-danger" href="@Url.Action("Index")" >Cancelar</a>
+		</div>
+	</div>
+}

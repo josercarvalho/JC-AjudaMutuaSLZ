@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ajuda Mutua SLZ</title>
+    
+    <!-- Le styles -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/lightbox/css/lightbox.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Le Scripts -->
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/modernizr-2.7.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/jquery.maskedinput-1.3.1.min.js"></script>
+    <script src="~/Scripts/methods_pt.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/lightbox/js/lightbox.min.js"></script>
+    
+    @RenderSection("head", required: false)
+
+</head>
+<body>
+    
+    @Html.Partial("_MenuEscritorio")
+    <div class="container body-content">
+        @*<br/>*@
+        <div class="panel panel-body">
+            @RenderSection("featured", required: false)
+            @RenderBody()
+            <hr/>
+        </div>
+        <br/>
+        @Html.Partial("_Rodape")
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

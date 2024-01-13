@@ -1,0 +1,82 @@
+﻿@{
+    var i = 1;
+}
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Login</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Conta</th>
+                <th>Status</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<JC_AjudaMutuaSLZ.Models.UpLine>)ViewBag.UpLine)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.Clientes.Login</td>
+                    <td>@item.Clientes.Nome</td>
+                    <td>@item.Clientes.Email</td>
+                    <td>@item.Clientes.Telefone</td>
+                    <td>
+                        <dl class="form-horizontal">
+                            <dt>Banco:</dt>
+                            <dd>@item.Clientes.Banco</dd>
+                            <dt>Tipo:</dt>
+                            <dd>@item.Clientes.TipoConta</dd>
+                            <dt>Agencia:</dt>
+                            <dd>@item.Clientes.Agencia</dd>
+                            <dt>Conta:</dt>
+                            <dd>@item.Clientes.Conta</dd>
+                            @if (@item.Clientes.Operacao != null)
+                            {
+                                <dt>Op:</dt>
+                                <dd>@item.Clientes.Operacao</dd>
+                            }
+                        </dl>
+                    </td>
+                    
+                    @if (@item.Status == "PENDENTE")
+                    {
+                        <td>
+                            <span class="label label-danger">PENDENTE</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-default arquivo-btn glyphicon glyphicon-transfer" data-nome="@item.Clientes.Nome" data-id="@item.idCliente" data-login="@item.Clientes.Login" title="Enviar Comprovante para @item.Clientes.Nome"> Enviar Comprovante</button>
+                            </div>
+                        </td>
+                    }
+                    
+                    @if (@item.Status == "ENVIADO")
+                    {
+                        <td>
+                            <span class="label label-info">ENVIADO</span>
+                        </td>
+                        <td>
+                            <span class="label label-warning">Aguardando confirmação de recebimento</span>
+                        </td>
+                    }
+                    
+                    @if (@item.Status == "COMPROVADO")
+                    {
+                        <td>
+                            <span class="label label-success">COMPROVADO</span>
+                        </td>
+                        <td>
+                            <span class="label label-success">Comprovante enviado e aprovado</span>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

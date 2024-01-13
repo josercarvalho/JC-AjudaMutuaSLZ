@@ -1,0 +1,34 @@
+﻿@*@model*@ 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Escritorio/Views/Shared/_Layout.cshtml";
+}
+
+@if (@ViewBag.Status == 1)
+{
+    @Html.Partial("_Liberado")
+    @Html.Partial("_UpLine")
+}
+else
+{
+    @Html.Partial("_Pendente")
+
+    @Html.Partial("_UpLine")
+}
+@Html.Partial("_Upload")
+
+@section scripts {
+    <script>
+        $(".arquivo-btn").click(function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var nome = $(this).data("nome");
+            var idcliente = $(this).data('login');
+            $('#myModal').modal('show');
+            $(".modal-body input[type=hidden]").val(id);
+            $(".modal-body span").text(nome);
+            $("#inputLogin").val(idcliente);
+        });
+    </script>
+}
+

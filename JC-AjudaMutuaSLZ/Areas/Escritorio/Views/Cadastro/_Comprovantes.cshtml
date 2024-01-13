@@ -1,0 +1,60 @@
+﻿@*@if (@Model.Count() == 0) *@
+    
+@if ((IEnumerable<JC_AjudaMutuaSLZ.Models.Arquivo>)ViewBag.Arquivo == null)
+{
+   <div class="alert alert-danger text-center">
+        <h4>Nenhum comprovante a ser liberado</h4>
+    </div>
+} 
+else 
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Status</th>
+                    <th>Comprovante</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (IEnumerable<JC_AjudaMutuaSLZ.Models.Arquivo>)ViewBag.Arquivo)
+                {
+                    <tr>
+                        <td>@item.Clientes.Login</td>
+                        <td>@item.Clientes.Nome</td>
+                        <td>@item.Clientes.Email</td>
+                        <td>
+                            <span class="label label-danger">PENDENTE</span>
+                        </td>
+                        <td class="text-center">
+                            <a href= "@Url.Content(@ViewBag.Comprovante + @item.Nome)" data-title="Comprovante" data-lightbox="@item.Clientes.Nome">Comprovante</a>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                @*<button id="Confirma-btn" class="btn btn-success glyphicon Confirma-btn glyphicon-check" title="Liberar Pagemento" data-Id="@item.IdCliente" data-Origem="@item.IdOrigem"> Confirmar</button>*@
+                                @Ajax.ActionLink(" Confirmar", "LiberaCadastro", "Cadastro",
+                                    new
+                                    {
+                                        idCliente = @item.IdCliente,
+                                        idORigem = @item.IdOrigem
+                                    },
+                                    new AjaxOptions
+                                    {
+                                        Confirm = "Confirmar Pagamento ?",
+                                        InsertionMode = InsertionMode.InsertAfter,
+                                        LoadingElementId = "divAguarde",
+                                        UpdateTargetId = @item.IdCliente.ToString(),
+                                        HttpMethod = "POST"
+                                    }, new { @class = "btn btn-success glyphicon glyphicon-check", @title = "Liberar Pagemento" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

@@ -1,0 +1,22 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="myLiberaPgmto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @using (Html.BeginForm("LiberaCadastro", "Cadastro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"> Confirmar Pagamento</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma Liberação de pagamento &nbsp;?</p>
+                    <input type="hidden" class="form-control" id="inputidCliente" name="idCliente" />
+                    <input type="hidden" class="form-control" id="inputidOrigem" name="idOrigem" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="submit">Confirma</button>
+                </div>
+            </div><!-- /.modal-content -->
+        }
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

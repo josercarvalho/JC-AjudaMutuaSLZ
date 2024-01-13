@@ -1,0 +1,137 @@
+﻿@model IEnumerable<JC_AjudaMutuaSLZ.Models.Arquivo>
+
+@{
+    ViewBag.Title = "Liberar Cadastros";
+    Layout = "~/Areas/Escritorio/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liberar pagamentos pendentes</h2>
+<hr />
+<div class="alert alert-success text-center">
+    <h2>Seu Link de Acesso <a href=@ViewBag.Acesso.ToString() class="" target="_blank">@ViewBag.Acesso</a></h2>
+</div>
+
+
+<br/>
+@if (!@Model.Any())
+{
+    <div class="alert alert-danger text-center">
+        <h4>Nenhum comprovante a ser liberado</h4>
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+    <div class="col-md-4">
+        <div class="input-group">
+            @Html.TextBox("strCriterio", ViewBag.CurrentFilter as string, new { @class = "form-control input-sm", @placeholder = "Buscar por Nome" })        
+            <span class="input-group-btn">
+                <button class="btn btn-info btn-sm glyphicon glyphicon-search " type="submit" value="Procurar" title="Procurar"></button>
+            </span>
+        </div>
+    </div>
+    }
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Status</th>
+                    <th>Comprovante</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Clientes.Login</td>
+                        <td>@item.Clientes.Nome</td>
+                        <td>@item.Clientes.Email</td>
+                        <td>
+                            <span class="label label-danger">PENDENTE</span>
+                        </td>
+                        <td class="text-center">
+                            <a href= "@Url.Content(@ViewBag.Comprovante + @item.Nome)" data-title="Comprovante" data-lightbox="@item.Clientes.Nome">Comprovante</a>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                @*@Html.ActionLink(" Confirmar","LiberaCadastro", new { idCliente=item.IdCliente, idOrigem=item.IdOrigem  }, new { @class="btn btn-success glyphicon glyphicon-check", @Title="Liberar Pagemento" })*@
+                                @*<button id="Confirma-btn" class="btn btn-success glyphicon Confirma-btn glyphicon-check" title="Liberar Pagemento" data-Id="@item.IdCliente" data-Origem="@item.IdOrigem"> Confirmar</button>*@
+                                @Ajax.ActionLink(" Confirmar", "LiberaPagamento", "Cadastro",
+                                    new
+                                    {
+                                        idCliente = @item.IdCliente,
+                                        idORigem = @item.IdOrigem
+                                    },
+                                    new AjaxOptions
+                                    {
+                                        Confirm = "Confirmar Pagamento ?",
+                                        InsertionMode = InsertionMode.Replace,
+                                        LoadingElementId = "divAguarde",
+                                        HttpMethod = "Post",
+                                        OnSuccess = "window.location.reload()"
+                                    }, new { @class = "btn btn-success glyphicon glyphicon-check", @title = "Liberar Pagemento" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@*@Html.Partial("_Comprovantes")*@
+
+<div id="divAguarde" class="progresso">
+    <img src="@Url.Content("~/Images/aguarde_g.gif")" alt=""/>
+</div>
+
+@*@Html.Partial("_LiberaCadastros", Model)*@
+
+@section scripts {
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+
+        //$(".Confirma-btn").click(function (e) {
+        //    e.preventDefault();
+        //    var idCliente = $(this).data('idCliente');
+        //    var idOrigem = $(this).data("idOrigem");
+        //    $('#myLiberaPgmto').modal('show');
+        //    $("#inputidCliente").val(idCliente);
+        //    $("#inputOrigem").val(idOrigem);
+        //});
+
+        $(".Confirma-btn").click(function (e) {
+            e.preventDefault();
+            bootbox.confirm("Confirma Liberação de pagamento?", function (result) {
+                if (result === null) {
+                    bootbox.alert("Confirmação cancelada!");
+                } else {
+                    var idCliente = $(this).data('Id');
+                    var idOrigem = $(this).data('Origem');
+                    var strUrl = "/Escritorio/Cadastro/LiberaCadastro/";
+                    alert(idCliente + " " + idOrigem);
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: strUrl,  @*'@Url.Action("LiberaCadastro", "Cadastro")',*@
+                        data: JSON.stringify({ 'idCliente': idCliente, 'idOrigem': idOrigem }),
+                        traditional: true,
+                        success: self.sucesso,
+                        error: self.falha
+                    });
+                }
+            });
+        });
+
+        self.sucesso = function () { bootbox.alert("Dados salvos com sucesso!"); };
+        self.falha = function () { bootbox.alert("Falha ao salvar os dados!"); };
+
+    </script>
+}

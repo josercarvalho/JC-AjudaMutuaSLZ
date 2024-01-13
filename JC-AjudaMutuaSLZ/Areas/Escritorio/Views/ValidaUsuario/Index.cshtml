@@ -1,0 +1,87 @@
+﻿@*@using System.Web.Optimization*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Acesso Restrito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema para Gerenciar Ajuda Mútua SLZ">
+    <meta name="author" content="JCarvalho TI">
+
+    <!-- Le styles -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <!-- Le Scripts -->
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/modernizr-2.7.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+
+    <style>
+        html {
+            background-image: url('../../../../Images/bkg-blu.jpg');
+
+        }
+
+        body {
+            padding-top: 40px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @*<br/>
+        <div class="text-center">
+            <img src="~/images/Logo_Carvalho.png" class="img-rounded" width="250" height="150" />
+            <h1>Bem vindo ao <b><em>Ajuda Mútua SLZ</em></b></h1>
+        </div>
+        <br/>*@
+        @using (Html.BeginForm("AutenticarUsuario", "ValidaUsuario", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h4 class="form-signin-heading">Acesso Restrito</h4>
+                </div>
+                <div class="panel-body text-center">
+                    <a href="http://www.facebook.com/JCarvalhoInformatica" target="_blanck" title="JCarvalho TI">
+                    <img src="~/images/Logo_Carvalho.png" class="img-rounded" width="220" height="120" /></a>
+
+                    @Html.TextBox("Usuario", "Nome de Usuário", new { @class = "form-control", @autofocus = "autofocus", @onfocus = "this.value=''", placeholder = "Nome de Usuário" })
+                    @Html.Password("Senha", "Senha", new { @class = "form-control", onfocus = "this.value=''", placeholder = "Senha" })
+                    <label class="">
+                        @Html.ActionLink("Esqueceu sua senha?", "RecuperarSenha", null, new { @class = "", onclick = "javascript: valida()" })
+                    </label>
+                    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+                </div>
+            </div>
+            <h2>@ViewBag.Erro</h2>
+        }
+    </div>
+    <!-- /container -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#RecuperarSenha").click(function() {
+            var valida = function () {
+                if (document.getElementById("Email") == "") {
+                    alert("O campo e-mail é obrigatório");
+                    return false;
+                }
+                return false;
+            };
+            //$("#Senha").pstrength();
+        });
+    </script>
+</body>
+</html>

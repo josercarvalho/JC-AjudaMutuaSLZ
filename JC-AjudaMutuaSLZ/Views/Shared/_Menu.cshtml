@@ -1,0 +1,22 @@
+﻿<div class="container">
+    
+    @if (!ReferenceEquals(@Session["Login"], null))
+    {
+        <div class="text-right">
+            <h4>Você foi indicado por: <b>@Session["Login"] </b></h4>
+        </div>
+    }
+
+    <div class="masthead">
+        <h3 class="text-muted">@Html.ActionLink("Ajuda Mutua SLZ", "Index", "Home")</h3>
+        <ul class="nav nav-justified">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Como Funciona", "ComoFunciona", "Home")</li>
+            <li>@Html.ActionLink("Cadastre-se", "Create", "Cadastro")</li>
+            <li>@Html.ActionLink("Painel de Controle", "Index", "ValidaUsuario", new {area = "Escritorio"}, null)</li>
+            <li>@Html.ActionLink("FAQ", "Faq", "Home")</li>
+            <li>@Html.ActionLink("Contato", "Contato", "Home")</li>
+        </ul>
+    </div>
+</div>
+

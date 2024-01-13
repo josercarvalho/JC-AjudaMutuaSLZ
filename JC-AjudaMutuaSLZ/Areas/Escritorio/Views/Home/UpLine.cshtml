@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "UpLine";
+    Layout = "~/Areas/Escritorio/Views/Shared/_Layout.cshtml";
+}
+<h1>Minha UpLine.</h1>
+<hr />
+<div class="alert alert-success text-center">
+    <h2>Seu Link de Acesso <a href=@ViewBag.Acesso class="" target="_blank">@ViewBag.Acesso</a></h2>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                 @*<th>Status</th>
+               <th>Ação</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<JC_AjudaMutuaSLZ.Models.UpLine>)ViewBag.UpLine)
+            {
+                <tr>
+                    <td>@item.Clientes.Login</td>
+                    <td>@item.Clientes.Nome</td>
+                    <td>@item.Clientes.Email</td>
+                    <td>@item.Clientes.Telefone</td>
+                    
+                    @*@if (@item.Status == "PENDENTE")
+                    {
+                        <td>
+                            <span class="label label-danger">PENDENTE</span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-default arquivo-btn glyphicon glyphicon-transfer" data-nome="@item.Clientes.Nome" data-id="@item.idCliente" data-login="@item.Clientes.Login" title="Enviar Comprovante para @item.Clientes.Nome"> Enviar Comprovante</button>
+                            </div>
+                        </td>
+                    }
+                    
+                    @if (@item.Status == "ENVIADO")
+                    {
+                        <td>
+                            <span class="label label-info">ENVIADO</span>
+                        </td>
+                        <td>
+                            <span class="label label-warning">Aguardando confirmação de recebimento</span>
+                        </td>
+                    }
+                    
+                    @if (@item.Status == "COMPROVADO")
+                    {
+                        <td>
+                            <span class="label label-success">COMPROVADO</span>
+                        </td>
+                        <td>
+                            <span class="label label-warning">Comprovante enviado e aprovado</span>
+                        </td>
+                    }*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

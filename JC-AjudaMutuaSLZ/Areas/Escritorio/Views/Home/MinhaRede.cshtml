@@ -1,0 +1,55 @@
+﻿@model IQueryable<JC_AjudaMutuaSLZ.Models.Clientes>
+
+@{
+    ViewBag.Title = "Minha Rede";
+    Layout = "~/Areas/Escritorio/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Minha Rede</h2>
+<hr />
+<div class="alert alert-success text-center">
+    <h2>Seu Link de Acesso <a href=@ViewBag.Acesso class="" target="_blank">@ViewBag.Acesso</a></h2>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Data do Cadastro</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Login</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>@item.Telefone</td>
+                    <td>@item.DataCadastro</td>
+                    @if (@item.Status == 0)
+                    {
+                        <td>
+                            <span class="label label-danger">INATIVO</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <span class="label label-success">ATIVO</span>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

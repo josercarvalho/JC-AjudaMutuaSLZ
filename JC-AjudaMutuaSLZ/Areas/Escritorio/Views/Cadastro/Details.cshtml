@@ -1,0 +1,105 @@
+﻿@model JC_AjudaMutuaSLZ.Models.Clientes
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Detalhes Clientes</h2>
+<hr />
+<div class="dl-horizontal">
+    <h4>Clientes</h4>
+    <hr />    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idCliente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idCliente)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Login)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Login)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telefone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefone)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SKYPE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SKYPE)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Senha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Senha)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Banco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Banco)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TipoConta)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoConta)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Agencia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Agencia)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Conta)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conta)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Operacao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Operacao)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Patrocinador)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Patrocinador)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataCadastro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataCadastro)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+</div>
+<div class="form-group">
+    @Html.ActionLink("Editar", "Edit", new { /* id = Model.PrimaryKey */}, new { @class="btn btn-primary"})
+	@Html.ActionLink("Voltar", "Index", new { @class="btn btn-danger"})
+</div>
